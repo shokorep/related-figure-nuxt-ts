@@ -1,27 +1,33 @@
 <template>
-  <div class="container">
-    <div>
-      <logo />
-      <h1 class="title">
-        nuxt-ts
-      </h1>
-      <h2 class="subtitle">
-        {{ $vxm.users.fullname }}'s swell Nuxt.js project
-      </h2>
-      <div class="links">
-        <a href="https://nuxtjs.org/" target="_blank" class="button--green">
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey"
-        >
-          GitHub
-        </a>
+  <div>
+    <div class="header-area">
+      <div class="header-nav">
+        <p>
+          <nuxt-link to="/figure"> Go to Next</nuxt-link>
+        </p>
       </div>
+    </div>
+    <div class="container">
       <div>
-        <nuxt-link to="/figure"> Go to Next</nuxt-link>
+        <logo />
+        <h1 class="title">
+          nuxt-ts
+        </h1>
+        <h2 class="subtitle">
+          {{ $vxm.users.fullname }}'s swell Nuxt.js project
+        </h2>
+        <div class="links">
+          <a href="https://nuxtjs.org/" target="_blank" class="button--green">
+            Documentation
+          </a>
+          <a
+            href="https://github.com/nuxt/nuxt.js"
+            target="_blank"
+            class="button--grey"
+          >
+            GitHub
+          </a>
+        </div>
       </div>
     </div>
   </div>
@@ -40,6 +46,8 @@ export default class extends Vue {
     hoge: string
   }
 
+  navList = ['/figure', '/myPage']
+
   async mounted() {
     await this.$vxm.users.doAnotherAsyncStuff(0)
   }
@@ -47,18 +55,48 @@ export default class extends Vue {
 </script>
 
 <style scoped>
-/* autoprefixer grid: no-autoplace */
 .container {
   display: grid;
 
-  /* Caution: `min-height: 100vh` does not work in IE 11 */
   height: 100vh;
   margin: 0 auto;
   text-align: center;
 
-  /* Caution: `1fr` has different results in IE 11 */
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
+}
+
+.header-area {
+  position: relative;
+  grid-row: 1;
+  grid-column: 1;
+
+  /* position: fixed;
+  top: 0;
+  right: 0;
+  left: 0; */
+  z-index: 10;
+  width: 100%;
+  height: 50vh;
+  min-height: 100px;
+  max-height: 230px;
+  text-align: center;
+  background-color: #333;
+  box-shadow: 0 0 10px 0;
+}
+
+.header-nav {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 5vh;
+  min-height: 30px;
+  max-height: 40px;
+  color: #fff;
+  text-align: center;
+  background-color: #333;
+  border: #ff3f;
+  border-style: solid;
 }
 
 .container > div {
