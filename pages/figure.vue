@@ -1,42 +1,27 @@
 <template>
   <div>
-    <div class="header-area">
-      <div class="header-nav">
-        <ul>
-          <li
-            v-for="(navItem, index) in navList"
-            :key="index"
-            :to="navItem.to"
-            class="header-nav-item"
-          >
-            <a :href="navItem.to">
-              {{ navItem.text }}
-            </a>
-          </li>
-        </ul>
+    <div class="header">
+      <img src="../assets/img/logo.png" alt="ロゴ" class="header-logo" />
+      <div class="nav">
+        <div class="nav-item">
+          <ul>
+            <li
+              v-for="(navItem, index) in navList"
+              :key="index"
+              :to="navItem.to"
+              class="nav-item nav-item-content"
+            >
+              <a :href="navItem.to">
+                {{ navItem.text }}
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
     <div class="container">
-      <div>
-        <logo />
-        <h1 class="title">
-          nuxt-ts
-        </h1>
-        <h2 class="subtitle">
-          {{ $vxm.users.fullname }}'s swell Nuxt.js project
-        </h2>
-        <div class="links">
-          <a href="https://nuxtjs.org/" target="_blank" class="button--green">
-            Documentation
-          </a>
-          <a
-            href="https://github.com/nuxt/nuxt.js"
-            target="_blank"
-            class="button--grey"
-          >
-            GitHub
-          </a>
-        </div>
+      <div class="figure-field">
+        aaaa
       </div>
     </div>
   </div>
@@ -56,8 +41,8 @@ export default class extends Vue {
   }
 
   navList = [
-    { to: '/figure', text: '関連図' },
-    { to: '/myPage', text: 'マイページ' }
+    { to: '/myPage', text: 'マイページ' },
+    { to: '/figure', text: '関連図' }
   ]
 
   async mounted() {
@@ -66,7 +51,11 @@ export default class extends Vue {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+a {
+  text-decoration: none;
+}
+
 .container {
   display: grid;
 
@@ -74,53 +63,63 @@ export default class extends Vue {
   margin: 0 auto;
   text-align: center;
 
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(12, 1fr);
 }
 
-.header-area {
+.header {
   position: relative;
-  grid-row: 1;
-  grid-column: 1;
-
-  /* position: fixed;
-  top: 0;
-  right: 0;
-  left: 0; */
+  grid-row: 4 / 8;
+  grid-column: 4 / 8;
   z-index: 10;
   width: 100%;
-  height: 50vh;
-  min-height: 100px;
-  max-height: 230px;
+  height: 20vh;
+  min-height: 120px;
+  max-height: 180px;
   text-align: center;
-  background-color: #333;
+  background: #f5c9c6;
   box-shadow: 0 0 10px 0;
+
+  &-logo {
+    width: 25%;
+    height: 15vh;
+    min-height: 87px;
+    max-height: 180px;
+  }
 }
 
-.header-nav {
+.nav {
   position: absolute;
   bottom: 0;
   width: 100%;
   height: 5vh;
   min-height: 30px;
-  max-height: 40px;
-  color: #fff;
+  max-height: 50px;
+  color: #000;
   text-align: center;
-  background-color: #333;
-  border: #ff3f;
+  background: linear-gradient(#f5c9c6, #feeeed);
+  border: #feeeed;
   border-style: solid;
-}
 
-.header-nav-item {
-  display: inline-block;
-  margin-right: 20px;
-  cursor: pointer;
-  background: #fff;
-}
+  &-logo {
+    display: inline-block;
+  }
 
-.container > div {
-  grid-column: 2 / 3;
-  grid-row: 2 / 3;
+  &-item {
+    display: inline-block;
+
+    &-content {
+      margin: 2px 20px 2px 0;
+      cursor: pointer;
+
+      // background: #fff;
+    }
+  }
+}
+.figure-field {
+  grid-column: 2 / 12;
+  grid-row: 2 / 12;
+  background: #f0f8ff;
 }
 
 .title {
