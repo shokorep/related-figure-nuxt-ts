@@ -21,7 +21,7 @@
     </div>
     <div class="container">
       <div class="figure-field">
-        aaaa
+        {{ aaa }}
       </div>
     </div>
   </div>
@@ -38,6 +38,10 @@ export default class extends Vue {
   @Prop()
   test!: {
     hoge: string
+  }
+
+  async asyncData() {
+    return { aaa: await $nuxt.$api.bpi.currentprice_json.$get() }
   }
 
   navList = [
