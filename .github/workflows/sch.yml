@@ -1,9 +1,9 @@
 name: scheduletest
 on:
   schedule:
+    - cron:  '46 */1 * * *'
     - branches:
       - githubactions
-    - cron:  '46 */1 * * *'
 
 jobs:
   # audit
