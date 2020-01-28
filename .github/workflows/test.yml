@@ -32,7 +32,7 @@ jobs:
     - run: npm i
     - run: npm run lint:fix
 # ホストランナーのテスト
-  lint:
+  testhostrunner:
       name: lint
       needs: build
       runs-on: ubuntu-latest
