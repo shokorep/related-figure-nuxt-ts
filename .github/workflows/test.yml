@@ -3,6 +3,8 @@ on:
   push:
     branches:
       - githubactions
+      - master
+      - develop
 
 jobs:
   build:
